@@ -176,6 +176,11 @@ class Device:
 
         self._check_ack(command_byte, ack_timeout)
 
+    def disconnect(self, timeout: float | None = 5):
+        print("disconnect()")
+
+        self.protocol.disconnect(timeout)
+
     def ping(self):
         logging.debug("ping()")
         self._send_message_to_device(Message(0, 0, b"\x00\x00"), True, 0.5)
